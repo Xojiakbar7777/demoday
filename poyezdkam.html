@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+    
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f4; }
+        .container { max-width: 400px; margin: 50px auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 2px 2px 15px rgba(0,0,0,0.2); }
+        select, input, button { width: 100%; margin: 10px 0; padding: 10px; border-radius: 5px; border: 1px solid #ccc; }
+        button { background-color: #28a745; color: white; cursor: pointer; font-weight: bold; }
+        button:hover { background-color: #218838; }
+    </style>
+</head>
+<body>
+
+    <div class="h-[70px] bg-orange-400 flex items-center justify-around">
+        <h1 class=" text-white text-[25px] font-semibold"><i class="bi bi-envelope-paper-fill"></i> Только электронный полис безопасней</h1>
+        
+        <h1 class=" text-white text-[25px] font-semibold"><i class="bi bi-stopwatch"></i> Минимум действий — экономия времени</h1>
+        
+        <h1 class=" text-white text-[25px] font-semibold"><i class="bi bi-pc-display"></i> Оформление через Вайбер или сайт</h1>
+        </div>
+        
+        
+        <div class="h-[100px] bg-slate-100 flex justify-around items-center">
+            <div class="flex gap-4">
+                <img src="./Assets/box.png" alt="">
+               <div>
+        <h1 class="text-blue-600 text-[38px] font-semibold">Дарим 300$</h1>
+        <h1 class="font-semibold">если у нас будет дороже</h1>
+               </div> 
+            </div>
+        
+        <ul class="flex gap-12">
+            <li><a href="./index.html" class="hover:underline decoration-blue-600 font-semibold">Главная страница</a></li>
+            <li><a href="./nas.html" class="hover:underline decoration-blue-600 font-semibold">О нас</a></li>
+            <li><a href="./kontakti.html" class="hover:underline decoration-blue-600 font-semibold">Контакты</a></li>
+            <li><a href="./register.html" class="hover:underline decoration-blue-600 font-semibold">Оплата и доставка</a></li>
+        </ul>
+        
+        <div class="flex gap-4 items-center">
+            <img src="./Assets/i1.svg" alt="">
+            <img src="./Assets/i2.png" alt="" class="w-[50px] h-[50px]">
+            <img src="./Assets/i3.svg" alt="">
+        
+            <div>
+                <h1 class="text-blue-600 text-[38px] font-semibold">977770159</h1>
+                <h1 class="text-[20px]">10:00-23:00</h1>
+            </div>
+        </div>
+        
+        </div>
+
+
+    <div class="container">
+        <h2>Калькулятор стоимости</h2>
+        
+        <label for="continent">Выберите континент:</label>
+        <select id="continent" onchange="updateCountries()">
+            <option value="europe">Европа</option>
+            <option value="asia">Азия</option>
+            <option value="america">Америка</option>
+        </select>
+        
+        <label for="country">Выберите страну:</label>
+        <select id="country"></select>
+        
+        <label for="days">Количество дней:</label>
+        <input type="number" id="days" value="7" min="1">
+        
+        <label for="vehicle">Тип автомобиля:</label>
+        <select id="vehicle">
+            <option value="1">Легковой</option>
+            <option value="1.5">Грузовой</option>
+            <option value="0.8">Мотоцикл</option>
+        </select>
+        
+        <button onclick="calculatePrice()">Рассчитать</button>
+        
+        <h3>Стоимость: <span id="result">0</span> €</h3>
+    </div>
+
+    <script>
+        const countryData = {
+            europe: {
+                "Германия": 1.5,
+                "Франция": 1.8,
+                "Италия": 2.0,
+                "Испания": 1.7,
+                "Нидерланды": 1.6
+            },
+            asia: {
+                "Китай": 2.5,
+                "Япония": 2.8,
+                "Индия": 2.0,
+                "Южная Корея": 2.3,
+                "Таиланд": 1.9
+            },
+            america: {
+                "США": 3.0,
+                "Канада": 2.7,
+                "Бразилия": 2.2,
+                "Аргентина": 2.0,
+                "Мексика": 2.1
+            }
+        };
+        
+        function updateCountries() {
+            let continent = document.getElementById('continent').value;
+            let countrySelect = document.getElementById('country');
+            countrySelect.innerHTML = '';
+            
+            for (let country in countryData[continent]) {
+                let option = document.createElement('option');
+                option.value = countryData[continent][country];
+                option.textContent = country;
+                countrySelect.appendChild(option);
+            }
+        }
+        
+        function calculatePrice() {
+            let countryFactor = parseFloat(document.getElementById('country').value);
+            let days = parseInt(document.getElementById('days').value);
+            let vehicleFactor = parseFloat(document.getElementById('vehicle').value);
+            let basePricePerDay = 2; // Базовая цена в день
+            let totalPrice = basePricePerDay * days * countryFactor * vehicleFactor;
+            document.getElementById('result').textContent = totalPrice.toFixed(2);
+        }
+        
+        updateCountries(); // Инициализация стран при загрузке
+    </script>
+
+
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+    <script src="./tailwind.config.js"> </script>
+</body>
+</html>
