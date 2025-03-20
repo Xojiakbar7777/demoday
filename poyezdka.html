@@ -6,8 +6,17 @@
     <title>Document</title>
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="./register.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+    
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f4; }
+        .container { max-width: 400px; margin: 50px auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 2px 2px 15px rgba(0,0,0,0.2); }
+        select, input, .button1 { width: 100%; margin: 10px 0; padding: 10px; border-radius: 5px; border: 1px solid #ccc; }
+        .button1 { background-color: #28a745; color: white; cursor: pointer; font-weight: bold; }
+        button:hover { background-color: #218838; }
+    </style>
 </head>
 <body>
 
@@ -36,7 +45,7 @@
             <li><a href="./register.html" class="hover:underline decoration-blue-600 font-semibold">Оплата и доставка</a></li>
         </ul>
         
-        <div class="flex gap-4 items-center">
+        <div class="flex gap-4  ">
             <img src="./Assets/i1.svg" alt="">
             <img src="./Assets/i2.png" alt="" class="w-[50px] h-[50px]">
             <img src="./Assets/i3.svg" alt="">
@@ -50,56 +59,38 @@
         </div>
 
 
-
-
-
-
-    <div class="order-form-container">
-        <h2>Оформите заказ</h2>
-        <p>Заполните форму, и наш менеджер свяжется с вами для уточнения деталей доставки</p>
+    <div class="container">
+        <h2>Калькулятор стоимости</h2>
         
-        <form id="deliveryOrderForm" class="order-form">
-          <div class="form-group">
-            <label for="fullName">ФИО*</label>
-            <input type="text" id="fullName" name="fullName" required placeholder="Иванов Иван Иванович">
-          </div>
-          
-          <div class="form-group">
-            <label for="phone">Телефон*</label>
-            <input type="tel" id="phone" name="phone" required placeholder="+998 (99) 123-45-67">
-          </div>
-          
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="example@mail.com">
-          </div>
-          
-          <div class="form-group">
-            <label for="deliveryAddress">Адрес доставки*</label>
-            <textarea id="deliveryAddress" name="deliveryAddress" required rows="3" placeholder="Город, улица, дом, квартира, индекс"></textarea>
-          </div>
-          
-          <div class="form-group">
-            <label for="deliveryDate">Желаемая дата доставки</label>
-            <input type="date" id="deliveryDate" name="deliveryDate">
-          </div>
-          
-          <div class="form-group">
-            <label for="orderComments">Комментарии к заказу</label>
-            <textarea id="orderComments" name="orderComments" rows="3" placeholder="Дополнительные пожелания"></textarea>
-          </div>
-          
-          <div class="form-group checkbox-group">
-            <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
-            <label for="agreeTerms">Я согласен на обработку персональных данных</label>
-          </div>
-          
-          <button type="submit" class="submit-btn">Отправить заказ</button>
-        </form>
-      </div>
+        <label for="continent">Выберите континент:</label>
+        <select id="continent" onchange="updateCountries()">
+            <option value="europe">Европа</option>
+            <option value="asia">Азия</option>
+            <option value="america">Америка</option>
+        </select>
+        
+        <label for="country">Выберите страну:</label>
+        <select id="country"></select>
+        
+        <label for="days">Количество дней:</label>
+        <input type="number" id="days" value="7" min="1">
+        
+        <label for="vehicle">Тип автомобиля:</label>
+        <select id="vehicle">
+            <option value="1">Легковой</option>
+            <option value="1.5">Грузовой</option>
+            <option value="0.8">Мотоцикл</option>
+        </select>
+        
+        <button onclick="calculatePrice()" class="button1">Рассчитать</button>
+        
+        <h3>Стоимость: <span id="result">0</span> €</h3>
+    </div>
 
 
-      <div class="h-[127px] w-[739px] rounded-[15px] flex bg-white items-center justify-center gap-[25px] border border-blue-500 m-auto mt-10">
+
+
+    <div class="h-[127px] w-[739px] rounded-[15px] flex bg-white items-center justify-center gap-[25px] border border-blue-500 m-auto mt-10">
         <div>
             <h1 class="text-[45px] text-orange-400 font-bold">
                 0%
@@ -160,7 +151,7 @@
 
 
 
-<div class="h-[141px] bg-orange-400 flex justify-center mt-20 gap-10"data-aos="fade-up"   data-aos-delay="350">
+<div class="h-[141px] bg-orange-400 flex justify-center mt-20 gap-10"  data-aos="fade-up"   data-aos-delay="350">
     <img src="./Assets/telephone.png" alt="" class="h-[210px] relative bottom-17">
     <div>
         <h1 class="text-[20px] font-bold text-white">Хочешь страховку по минимальной цене?</h1>
@@ -169,7 +160,7 @@
     Раньше нужно было звонить и вызывать агента для оформления полиса. Сейчас, с вводом электроного полиса, ситуация на рынке изменилась.  По телефону <br>полис не оформляется. Нужно писать в Вайбер или оформлять самостоятельно.
         </h1>
     </div>
-    </div>
+</div>
 
 
 
@@ -253,36 +244,65 @@
         </div>
 
 
-      <script>
-        document.getElementById('deliveryOrderForm').addEventListener('submit', function(e) {
-          e.preventDefault();
-          
-          // Здесь можно добавить валидацию формы
-          const formData = {
-            fullName: document.getElementById('fullName').value,
-            phone: document.getElementById('phone').value,
-            email: document.getElementById('email').value,
-            deliveryAddress: document.getElementById('deliveryAddress').value,
-            deliveryDate: document.getElementById('deliveryDate').value,
-            orderComments: document.getElementById('orderComments').value
-          };
-          
-          // Здесь должен быть код для отправки данных на сервер
-          console.log('Данные формы:', formData);
-          
-          // Пример уведомления пользователя
-          alert('Спасибо за заказ! Наш менеджер свяжется с вами в ближайшее время.');
-          
-          // Очистка формы после отправки
-          this.reset();
-        });
-        </script>
 
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    
+    <script>
+        const countryData = {
+            europe: {
+                "Германия": 1.5,
+                "Франция": 1.8,
+                "Италия": 2.0,
+                "Испания": 1.7,
+                "Нидерланды": 1.6
+            },
+            asia: {
+                "Китай": 2.5,
+                "Япония": 2.8,
+                "Индия": 2.0,
+                "Южная Корея": 2.3,
+                "Таиланд": 1.9
+            },
+            america: {
+                "США": 3.0,
+                "Канада": 2.7,
+                "Бразилия": 2.2,
+                "Аргентина": 2.0,
+                "Мексика": 2.1
+            }
+        };
+        
+        function updateCountries() {
+            let continent = document.getElementById('continent').value;
+            let countrySelect = document.getElementById('country');
+            countrySelect.innerHTML = '';
+            
+            for (let country in countryData[continent]) {
+                let option = document.createElement('option');
+                option.value = countryData[continent][country];
+                option.textContent = country;
+                countrySelect.appendChild(option);
+            }
+        }
+        
+        function calculatePrice() {
+            let countryFactor = parseFloat(document.getElementById('country').value);
+            let days = parseInt(document.getElementById('days').value);
+            let vehicleFactor = parseFloat(document.getElementById('vehicle').value);
+            let basePricePerDay = 2; // Базовая цена в день
+            let totalPrice = basePricePerDay * days * countryFactor * vehicleFactor;
+            document.getElementById('result').textContent = totalPrice.toFixed(2);
+        }
+        
+        updateCountries(); // Инициализация стран при загрузке
+    </script>
+
+
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
-AOS.init();
+  AOS.init();
 </script>
-<script src="./tailwind.config.js"></script>
+    <script src="./tailwind.config.js"> </script>
 </body>
 </html>

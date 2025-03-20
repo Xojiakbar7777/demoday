@@ -6,11 +6,10 @@
     <title>Document</title>
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="./register.css">
+    <link rel="stylesheet" href="./orujiya.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body>
-
     <div class="h-[70px] bg-orange-400 flex items-center justify-around">
         <h1 class=" text-white text-[25px] font-semibold"><i class="bi bi-envelope-paper-fill"></i> Только электронный полис безопасней</h1>
         
@@ -52,54 +51,34 @@
 
 
 
-
-
-    <div class="order-form-container">
-        <h2>Оформите заказ</h2>
-        <p>Заполните форму, и наш менеджер свяжется с вами для уточнения деталей доставки</p>
+    <div class="container">
+        <h2>Калькулятор страховки</h2>
         
-        <form id="deliveryOrderForm" class="order-form">
-          <div class="form-group">
-            <label for="fullName">ФИО*</label>
-            <input type="text" id="fullName" name="fullName" required placeholder="Иванов Иван Иванович">
-          </div>
-          
-          <div class="form-group">
-            <label for="phone">Телефон*</label>
-            <input type="tel" id="phone" name="phone" required placeholder="+998 (99) 123-45-67">
-          </div>
-          
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="example@mail.com">
-          </div>
-          
-          <div class="form-group">
-            <label for="deliveryAddress">Адрес доставки*</label>
-            <textarea id="deliveryAddress" name="deliveryAddress" required rows="3" placeholder="Город, улица, дом, квартира, индекс"></textarea>
-          </div>
-          
-          <div class="form-group">
-            <label for="deliveryDate">Желаемая дата доставки</label>
-            <input type="date" id="deliveryDate" name="deliveryDate">
-          </div>
-          
-          <div class="form-group">
-            <label for="orderComments">Комментарии к заказу</label>
-            <textarea id="orderComments" name="orderComments" rows="3" placeholder="Дополнительные пожелания"></textarea>
-          </div>
-          
-          <div class="form-group checkbox-group">
-            <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
-            <label for="agreeTerms">Я согласен на обработку персональных данных</label>
-          </div>
-          
-          <button type="submit" class="submit-btn">Отправить заказ</button>
-        </form>
-      </div>
+        <label for="weapon-type">Тип оружия:</label>
+        <select id="weapon-type">
+            <option value="1.2">Огнестрельное</option>
+            <option value="1.0">Травматическое</option>
+            <option value="0.8">Пневматическое</option>
+        </select>
+        
+        <label for="coverage">Сумма покрытия (€):</label>
+        <input type="number" id="coverage" value="10000" min="5000" step="500">
+        
+        <label for="years">Срок страховки (лет):</label>
+        <input type="number" id="years" value="1" min="1">
+        
+        <button onclick="calculatePrice()">Рассчитать</button>
+        
+        <h3>Стоимость: <span id="result">0</span> €</h3>
+    </div>
 
 
-      <div class="h-[127px] w-[739px] rounded-[15px] flex bg-white items-center justify-center gap-[25px] border border-blue-500 m-auto mt-10">
+
+  
+
+
+
+    <div class="h-[127px] w-[739px] rounded-[15px] flex bg-white items-center justify-center gap-[25px] border border-blue-500 m-auto mt-10">
         <div>
             <h1 class="text-[45px] text-orange-400 font-bold">
                 0%
@@ -158,9 +137,19 @@
    <img src="./Assets/icon.png" alt="">
 </div>
 
+<div class="container reviews mt-16">
+    <h2>Отзывы клиентов</h2>
+    <div id="reviews-list">
+        <div class="review">Отличный сервис! Быстро и удобно. – Иван</div>
+        <div class="review">Нашёл оптимальный вариант страховки. – Мария</div>
+    </div>
+    
+    <h3>Оставьте ваш отзыв</h3>
+    <textarea id="review-text" placeholder="Введите ваш отзыв..."></textarea>
+    <button onclick="addReview()">Оставить отзыв</button>
+</div>
 
-
-<div class="h-[141px] bg-orange-400 flex justify-center mt-20 gap-10"data-aos="fade-up"   data-aos-delay="350">
+<div class="h-[141px] bg-orange-400 flex justify-center mt-20 gap-10"  data-aos="fade-up"   data-aos-delay="350">
     <img src="./Assets/telephone.png" alt="" class="h-[210px] relative bottom-17">
     <div>
         <h1 class="text-[20px] font-bold text-white">Хочешь страховку по минимальной цене?</h1>
@@ -253,36 +242,11 @@
         </div>
 
 
-      <script>
-        document.getElementById('deliveryOrderForm').addEventListener('submit', function(e) {
-          e.preventDefault();
-          
-          // Здесь можно добавить валидацию формы
-          const formData = {
-            fullName: document.getElementById('fullName').value,
-            phone: document.getElementById('phone').value,
-            email: document.getElementById('email').value,
-            deliveryAddress: document.getElementById('deliveryAddress').value,
-            deliveryDate: document.getElementById('deliveryDate').value,
-            orderComments: document.getElementById('orderComments').value
-          };
-          
-          // Здесь должен быть код для отправки данных на сервер
-          console.log('Данные формы:', formData);
-          
-          // Пример уведомления пользователя
-          alert('Спасибо за заказ! Наш менеджер свяжется с вами в ближайшее время.');
-          
-          // Очистка формы после отправки
-          this.reset();
-        });
-        </script>
 
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script>
-AOS.init();
-</script>
-<script src="./tailwind.config.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    <script src="./orujiya.js"></script>
 </body>
 </html>

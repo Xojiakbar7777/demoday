@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="./mashina.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <link rel="stylesheet" href="./dom.css">
 </head>
 <body>
     <div class="h-[70px] bg-orange-400 flex items-center justify-around">
@@ -47,104 +48,131 @@
         </div>
         
         </div>
+        
 
 
 
 
-       
 
-        <h1 class="text-[50px] font-semibold  flex gap-6 justify-center"> Введите <span class="text-blue-700 "> параметры </span> своего авто</h1>
 
-        <div class="container m-auto mt-16">
-            <label>Тип автомобиля</label>
-            <select id="carType">
-                <option>Легковой автомобиль</option>
-                <option>Грузовой автомобиль</option>
+
+        <div id="app" class="bg-white p-6 rounded-2xl shadow-xl w-80 border border-gray-300 m-auto mt-6 space-y-4" data-aos="fade-up"   data-aos-delay="350">
+            <h2 class="text-2xl font-bold text-center mb-4 text-gray-700">Калькулятор страхования</h2>
+            
+            <label class="block mb-2 text-gray-600">Стоимость недвижимости ($):</label>
+            <input type="number" v-model="propertyValue" class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 mb-3">
+            
+            <label class="block mb-2 text-gray-600">Срок страхования (лет):</label>
+            <input type="number" v-model="insuranceTerm" class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 mb-3">
+            
+            <label class="block mb-2 text-gray-600">Тип страхования:</label>
+            <select v-model="insuranceRate" class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <option value="0.01">Базовое (1%)</option>
+                <option value="0.015">Стандартное (1.5%)</option>
+                <option value="0.02">Полное (2%)</option>
             </select>
-        
-            <label>Объем двигателя</label>
-            <select id="engineSize">
-                <option>Менее 1600 см³</option>
-                <option>Больше 1600 см³</option>
-            </select>
-        
-            <label>Прописка по ТП</label>
-            <input type="text" id="city" placeholder="Введите город, например: Ташкент">
-        
-            <label>Франшиза</label>
-            <select id="franchise">
-                <option>Все</option>
-                <option>Без франшизы</option>
-            </select>
-        
-            <div class="checkbox-group">
-                <label><input type="checkbox" id="benefits"> Есть льготы</label>
-                <label><input type="checkbox" id="taxiUse"> Используется в такси</label>
-                <label><input type="checkbox" id="foreignPlate"> Авто на иностранных номерах</label>
-                <label><input type="checkbox" id="highDemand"> Пользуется спросом</label>
-                <label><input type="checkbox" id="directSettlement"> Прямое урегулирование</label>
+            
+            <div class="mt-4 p-3 bg-green-200 text-green-900 rounded-lg text-center font-bold text-2xl transition-all duration-300.">
+                Итог: ${{ totalCost.toFixed(2) }}
             </div>
-        
-            <button class="btn" onclick="calculate()">Рассчитать стоимость →</button>
         </div>
 
 
-<button class="w-[260px] h-[56px] bg-blue-700 text-white rounded-[41px] font-semibold mt-11 flex m-auto items-center justify-center" > <a href="">Рассчитать стоимость</a></button>
+<!-- joy -->
+
+
+<h1 class="flex justify-center text-2xl  font-bold mt-10">Конституция Республики Узбекистан</h1>
+
+
+<div class="flex justify-center mt-14 gap-6">
+
+    
+<div class="w-[400px] h-[300px] bg-gray-100 p-[20px] rounded-lg border-2 border-blue-300 shadow-lg btn1"data-aos="fade-right"   data-aos-delay="350">
+    <h1 class="text-[18px] font-semibold">Основные принципы</h1>
+    <h1>Основные положения
+        Конституция Республики Узбекистан провозглашает Узбекистан суверенным демократическим государством. Верховенство Конституции и законов является основополагающим принципом государственной власти. Государство обеспечивает права и свободы человека, а также гарантирует защиту частной и государственной собственности.</h1>
+</div>
+
+
+<div  class="w-[400px] h-[300px] bg-gray-100 p-[20px] rounded-lg border-2 border-blue-300 shadow-lg btn1" data-aos="fade-up"   data-aos-delay="350">
+<h1 class="text-[18px] font-semibold">
+    Права и свободы
+</h1>
+
+
+<h1>Гарантированные права граждан
+    Все граждане Узбекистана обладают равными правами и свободами независимо от пола, расы, национальности, языка, религии и других признаков. Конституция гарантирует право на жизнь, свободу слова, защиту частной собственности и неприкосновенность жилища. Государство обязано обеспечивать социальную защиту граждан, включая медицинское обслуживание и образование.</h1>
+
+</div>
 
 
 
+<div class="w-[400px] h-[300px] bg-gray-100 p-[20px] rounded-lg border-2 border-blue-300 shadow-lg btn1" data-aos="fade-left"   data-aos-delay="350">
+    <h1 class="text-[18px] font-semibold">
+        Государственное устройство
+    </h1>
 
-        <div class="h-[127px] w-[739px] rounded-[15px] flex bg-white items-center justify-center gap-[25px] border border-blue-500 m-auto mt-10">
-            <div>
-                <h1 class="text-[45px] text-orange-400 font-bold">
-                    0%
-                </h1>
-                
-            </div>
+    <h1>Структура государственной власти
+        Узбекистан является унитарным государством с республиканской формой правления. Государственная власть осуществляется на основе разделения на законодательную, исполнительную и судебную ветви. Президент Республики Узбекистан является главой государства и обеспечивает выполнение законов. Конституционный суд контролирует соответствие законов Конституции.</h1>
+
+</div>
+
+</div>
+
+
+
+<div class="h-[127px] w-[739px] rounded-[15px] flex bg-white items-center justify-center gap-[25px] border border-blue-500 m-auto mt-10">
+    <div>
+        <h1 class="text-[45px] text-orange-400 font-bold">
+            0%
+        </h1>
         
-           <h1 class="font-bold">Выбирайте полис с <span class="text-blue-600">нулевой франшизой</span>
-            Чтоб в случае ДТП никому и ничего не доплачивать!</h1>
-            
-        <img src="./Assets/icon5.png" alt="" >
-        
-            </div>
+    </div>
+
+   <h1 class="font-bold">Выбирайте полис с <span class="text-blue-600">нулевой франшизой</span>
+    Чтоб в случае ДТП никому и ничего не доплачивать!</h1>
+    
+<img src="./Assets/icon5.png" alt="" >
+
+    </div>
 
 
-        <h1 class="text-[45px] flex justify-center font-semibold mt-22 ">Покупая у нас Вы ничем не рискуете</h1>
+<h1 class="text-[45px] flex justify-center font-semibold mt-22 " data-aos="fade-up" data-aos-delay="350">Покупая у нас Вы ничем не рискуете</h1>
 
 
-<div class="flex justify-center gap-28 mt-32">
+<div class="flex justify-center gap-28 mt-32"data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300">
 <div>
-    <i class="bi bi-calendar2-check text-[60px] text-blue-800 flex justify-center"></i>
-    <h1 class="mt-6">Сайт работает 10 лет – <br> это лучшая гарантия <br> стабильности!</h1>
+<i class="bi bi-calendar2-check text-[60px] text-blue-800 flex justify-center"></i>
+<h1 class="mt-6">Сайт работает 10 лет – <br> это лучшая гарантия <br> стабильности!</h1>
 </div>
 
 <div>
-    <i class="bi bi-person-fill-check text-[60px] text-blue-800 flex justify-center"></i>
-    <h1 class="mt-6">Полис оформит <br> специалист с 10 летним <br> стажем</h1>
-</div>
-
-
-<div>
-    <i class="bi bi-clipboard2-check text-[60px] text-blue-800 flex justify-center"></i>
-    <h1 class="mt-6">Полис оформит <br> специалист с 10 летним <br> стажем</h1>
+<i class="bi bi-person-fill-check text-[60px] text-blue-800 flex justify-center"></i>
+<h1 class="mt-6">Полис оформит <br> специалист с 10 летним <br> стажем</h1>
 </div>
 
 
 <div>
-    <i class="bi bi-clipboard-check-fill text-[60px] text-blue-800 flex justify-center"></i>
-    <h1 class="mt-6">Предоставляем Вам <br> Юридическую гарантию</h1>
+<i class="bi bi-clipboard2-check text-[60px] text-blue-800 flex justify-center"></i>
+<h1 class="mt-6">Полис оформит <br> специалист с 10 летним <br> стажем</h1>
+</div>
+
+
+<div>
+<i class="bi bi-clipboard-check-fill text-[60px] text-blue-800 flex justify-center"></i>
+<h1 class="mt-6">Предоставляем Вам <br> Юридическую гарантию</h1>
 </div>
 
 <div>
-    <i class="bi bi-people-fill text-[60px] text-blue-800 flex justify-center"></i>
-    <h1>Условия сотрудничества <br> с нами открыты, <br>
-        вот договор</h1>
+<i class="bi bi-people-fill text-[60px] text-blue-800 flex justify-center"></i>
+<h1>Условия сотрудничества <br> с нами открыты, <br>
+вот договор</h1>
 </div>
 
 </div>
 
-<div class="h-[100px] w-[754px] flex justify-center   items-center mt-20 m-auto gap-32" data-aos="fade-up"   data-aos-delay="350">
+
+<div class="h-[100px] w-[754px] flex justify-center   items-center mt-20 m-auto gap-32">
     <h1 class="text-[80px] font-bold text-orange-600" >100%</h1>
     
     <h1 class="text-[20px] font-bold"><br>
@@ -152,10 +180,10 @@
        за неиспользованные месяцы страховки</h1>
        <img src="./Assets/icon.png" alt="">
     </div>
-
-
-
-    <div class="h-[141px] bg-orange-400 flex justify-center mt-20 gap-10">
+    
+    
+    
+    <div class="h-[141px] bg-orange-400 flex justify-center mt-20 gap-10" data-aos="fade-up"   data-aos-delay="350">
         <img src="./Assets/telephone.png" alt="" class="h-[210px] relative bottom-17">
         <div>
             <h1 class="text-[20px] font-bold text-white">Хочешь страховку по минимальной цене?</h1>
@@ -164,12 +192,12 @@
         Раньше нужно было звонить и вызывать агента для оформления полиса. Сейчас, с вводом электроного полиса, ситуация на рынке изменилась.  По телефону <br>полис не оформляется. Нужно писать в Вайбер или оформлять самостоятельно.
             </h1>
         </div>
-        </div>
-
-
-
+    </div>
+    
+    
+    
         <div class="h-[376px] flex justify-center pt-16 bg-slate-200 gap-24 items-center">
-
+    
             <div>
             <button class="border border-blue-600 rounded-[41px] w-[140px] h-[45px] text-blue-700 flex gap-4 items-center justify-center font-medium text-[19px]"> <i class="bi bi-house-door font-semibold"></i>Главная</button>
             
@@ -249,11 +277,25 @@
 
 
 
-        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-        <script>
-          AOS.init();
-        </script>
-            <script src="./tailwind.config.js"> </script>
-            <script src="./mashina.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+    <script src="./tailwind.config.js"> </script>
+
+    <script src="./dom.js"></script>
 </body>
 </html>

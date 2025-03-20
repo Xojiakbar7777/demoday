@@ -1,0 +1,56 @@
+body { 
+    font-family: Arial, sans-serif; 
+    text-align: center; 
+    background-color: #ffffff; 
+    color: #333;
+}
+.container { 
+    max-width: 400px; 
+    margin: 50px auto; 
+    padding: 20px; 
+    background: #f9f9f9; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+}
+select, input, button { 
+    width: 100%; 
+    margin: 10px 0; 
+    padding: 12px; 
+    border-radius: 5px; 
+    border: 1px solid #ccc; 
+    font-size: 16px;
+}
+select, input { background: #ffffff; color: #333; }
+
+button { 
+    background-color: #007bff; 
+    color: white; 
+    cursor: pointer; 
+    font-weight: bold; 
+    transition: 0.3s; 
+    border: none;
+}
+button:hover { background-color: #0056b3; }
+
+h2 { margin-bottom: 20px; }
+h3 { color: #007bff; }
+
+.reviews { 
+    margin-top: 30px; 
+    padding: 20px; 
+    background: #eef2f7; 
+    border-radius: 10px; 
+    text-align: left;
+}
+.review { 
+    padding: 10px; 
+    border-bottom: 1px solid #ccc; 
+}
+select, input, button, textarea { 
+    width: 100%; 
+    margin: 10px 0; 
+    padding: 12px; 
+    border-radius: 5px; 
+    border: 1px solid #ccc; 
+    font-size: 16px;
+}
