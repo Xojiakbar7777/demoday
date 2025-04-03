@@ -76,6 +76,100 @@
 
   
 
+    <div class="bg-gray-50 p-6 rounded-xl shadow-lg mt-8" data-aos="fade-up" data-aos-duration="1200">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Правовые нюансы</h3>
+        <p class="text-gray-700">Страхование владельцев оружия регулируется законодательством страны. В некоторых странах оно является обязательным для владельцев огнестрельного оружия. Важно знать правила вашего региона.</p>
+        <a href="./kontakti.html" class="text-blue-600 hover:underline mt-4 block">Подробнее о правовых нормах</a>
+      </div>
+      
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="container mx-auto px-4 py-8" data-aos="fade-up" data-aos-duration="1200">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-6">Часто задаваемые вопросы</h3>
+    
+        <div class="space-y-4">
+          <!-- Вопрос 1 -->
+          <div>
+            <button id="faq1" class="w-full text-left text-lg font-medium text-gray-800 bg-gray-100 p-4 rounded-lg shadow-md focus:outline-none">
+              Что покрывает страховка владельцев оружия?
+            </button>
+            <div id="answer1" class="hidden p-4 mt-2 bg-gray-50 rounded-lg text-gray-600">
+              <p>Страховка покрывает ущерб, причинённый третьим лицам в случае происшествия с использованием вашего оружия, включая смерть, травмы и материальные потери.</p>
+            </div>
+          </div>
+    
+          <!-- Вопрос 2 -->
+          <div>
+            <button id="faq2" class="w-full text-left text-lg font-medium text-gray-800 bg-gray-100 p-4 rounded-lg shadow-md focus:outline-none">
+              Нужно ли страхование, если я не использую оружие?
+            </button>
+            <div id="answer2" class="hidden p-4 mt-2 bg-gray-50 rounded-lg text-gray-600">
+              <p>В некоторых странах страхование может быть обязательным, независимо от того, используете ли вы оружие. Ознакомьтесь с законодательством вашего региона.</p>
+            </div>
+          </div>
+    
+          <!-- Вопрос 3 -->
+          <div>
+            <button id="faq3" class="w-full text-left text-lg font-medium text-gray-800 bg-gray-100 p-4 rounded-lg shadow-md focus:outline-none">
+              Как оформить страховку владельца оружия?
+            </button>
+            <div id="answer3" class="hidden p-4 mt-2 bg-gray-50 rounded-lg text-gray-600">
+              <p>Для оформления страховки вам нужно заполнить форму на нашем сайте или обратиться в офис. После этого вам будет предложено персонализированное предложение.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <script>
+        // Функция для переключения видимости ответов
+        function toggleAnswer(faqId, answerId) {
+          const answer = document.getElementById(answerId);
+          const faqButton = document.getElementById(faqId);
+          
+          // Если ответ скрыт, показываем его
+          if (answer.classList.contains('hidden')) {
+            answer.classList.remove('hidden');
+          } else {
+            // Если ответ открыт, скрываем его
+            answer.classList.add('hidden');
+          }
+        }
+    
+        // Привязываем события к кнопкам
+        document.getElementById('faq1').addEventListener('click', () => toggleAnswer('faq1', 'answer1'));
+        document.getElementById('faq2').addEventListener('click', () => toggleAnswer('faq2', 'answer2'));
+        document.getElementById('faq3').addEventListener('click', () => toggleAnswer('faq3', 'answer3'));
+      </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     <div class="h-[127px] w-[739px] rounded-[15px] flex bg-white items-center justify-center gap-[25px] border border-blue-500 m-auto mt-10" data-aos="fade-up"   data-aos-delay="350">
@@ -159,6 +253,25 @@
         </h1>
     </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
 
 
 

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
-<body>
+<body class="bg-slate-100">
     
     <style>
         body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f4; }
@@ -59,7 +59,7 @@
         </div>
 
 
-    <div class="container" data-aos="fade-up"   data-aos-delay="350">
+    <div class="container" data-aos="fade-up"   data-aos-delay="350" >
         <h2>Калькулятор стоимости</h2>
         
         <label for="continent">Выберите континент:</label>
@@ -84,8 +84,151 @@
         
         <button onclick="calculatePrice()" class="button1">Рассчитать</button>
         
-        <h3>Стоимость: <span id="result">0</span> €</h3>
+        <h3>Стоимость: <span id="result">0</span> $</h3>
     </div>
+
+
+
+
+
+
+
+
+
+    <div class="container mx-auto p-5"  data-aos="fade-up" data-aos-duration="1000">
+        <!-- Заголовок -->
+        <h1 class="text-3xl font-semibold text-center text-gray-800 mb-10">Страхование при поездке за границу на автомобиле</h1>
+
+        <!-- Раздел с пунктами страхования -->
+        <h2 class="text-2xl font-medium text-gray-700 text-center mb-6">Что покрывает Зеленая карта?</h2>
+        
+        <div id="insurance-list" class="flex space-x-6 overflow-x-auto py-4">
+            <!-- Сюда будет добавляться список с пунктами -->
+        </div>
+    </div>
+
+    <script>
+        // Массив с пунктами страхования
+        const insuranceItems = [
+            { title: 'Страхование гражданской ответственности', description: 'Покрывает ущерб, причиненный третьим лицам в случае аварии.' },
+            { title: 'Ущерб вашему автомобилю', description: 'Покрытие ущерба, если ваш автомобиль пострадал в ДТП или другом происшествии.' },
+            { title: 'Страхование от угона', description: 'Защита от угона вашего автомобиля за границей.' },
+            { title: 'Страхование медицинских расходов', description: 'Покрытие медицинских расходов для водителя и пассажиров в случае травм в ДТП.' },
+            { title: 'Помощь на дороге', description: 'Услуги эвакуации, ремонта, доставка топлива и другие услуги на дороге.' },
+            { title: 'Юридическая помощь', description: 'Консультации и помощь в случае возникновения юридических вопросов по ДТП.' }
+        ];
+
+        // Функция для рендеринга списка
+        function renderInsuranceList() {
+            const listContainer = document.getElementById('insurance-list');
+            insuranceItems.forEach((item, index) => {
+                const listItem = document.createElement('div');
+                listItem.classList.add('bg-white', 'p-6', 'rounded-lg', 'shadow-md', 'border', 'border-gray-200', 'w-80', 'flex-shrink-0');
+                listItem.innerHTML = `
+                    <h4 class="text-xl font-semibold text-gray-800">${item.title}</h4>
+                    <p class="text-gray-600 mt-2">${item.description}</p>
+                `;
+                listContainer.appendChild(listItem);
+            });
+        }
+
+        // Вызов функции для отображения данных
+        renderInsuranceList();
+    </script>
+
+
+
+
+
+
+
+<style>
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.8s ease forwards;
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+
+  <div class="max-w-screen-xl mx-auto px-6 py-16">
+    <h1 class="text-4xl font-bold text-center text-gray-800 mb-14"  data-aos="fade-up" data-aos-duration="1000">🌍 Необычные преимущества Зелёной карты</h1>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-[minmax(220px,_auto)]">
+      <!-- Карточки -->
+      <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-6 rounded-2xl shadow-xl fade-in col-span-2 row-span-2 flex flex-col justify-between">
+        <div>
+          <i data-lucide="home" class="w-10 h-10 mb-4"></i>
+          <h2 class="text-2xl font-bold mb-2">Страхование от повреждения имущества</h2>
+          <p class="text-lg">Компенсация ущерба чужой собственности. Защита в непредвиденных ситуациях. </p>
+        </div>
+        <span class="text-sm mt-4 italic opacity-80">Особое преимущество</span>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl shadow fade-in">
+        <i data-lucide="shield-check" class="w-8 h-8 text-blue-600 mb-3"></i>
+        <h3 class="font-semibold text-xl mb-1">Гражданская ответственность</h3>
+        <p class="text-gray-600">Покрытие ущерба третьим лицам при ДТП за границей.</p>
+      </div>
+
+      <div class="bg-yellow-100 p-6 rounded-2xl shadow fade-in">
+        <i data-lucide="car" class="w-8 h-8 text-yellow-600 mb-3"></i>
+        <h3 class="font-semibold text-xl mb-1">Ущерб авто</h3>
+        <p class="text-gray-700">Компенсация ремонта или замены автомобиля в другой стране.</p>
+      </div>
+
+      <div class="bg-green-100 p-6 rounded-2xl shadow fade-in">
+        <i data-lucide="globe" class="w-8 h-8 text-green-600 mb-3"></i>
+        <h3 class="font-semibold text-xl mb-1">Зона действия</h3>
+        <p class="text-gray-700">Работает по всей Европе, в СНГ и ряде других стран.</p>
+      </div>
+
+      <div class="bg-pink-100 p-6 rounded-2xl shadow fade-in">
+        <i data-lucide="clock" class="w-8 h-8 text-pink-600 mb-3"></i>
+        <h3 class="font-semibold text-xl mb-1">Быстрое оформление</h3>
+        <p class="text-gray-700">Получите страховку за 5 минут онлайн, без визита в офис.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

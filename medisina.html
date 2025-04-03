@@ -1,0 +1,385 @@
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добровольное медицинское страхование</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+
+
+    <script>
+        function calculateInsurance() {
+            // Получение значений
+            const age = parseInt(document.getElementById('age').value);
+            const packageType = document.querySelector('input[name="package"]:checked').value;
+            const additionalServices = document.querySelectorAll('input[name="services"]:checked');
+            
+            // Базовая стоимость по возрасту (в долларах)
+            let baseCost = 0;
+            if (age <= 30) {
+                baseCost = 200;  // $200 для молодежи
+            } else if (age <= 60) {
+                baseCost = 400;  // $400 для взрослых
+            } else {
+                baseCost = 600;  // $600 для пенсионеров
+            }
+            
+            // Стоимость в зависимости от типа пакета
+            let packageCost = 0;
+            switch(packageType) {
+                case 'basic':
+                    packageCost = 0;  // Базовый пакет
+                    break;
+                case 'standard':
+                    packageCost = 100;  // $100 для стандартного пакета
+                    break;
+                case 'premium':
+                    packageCost = 250;  // $250 для премиум пакета
+                    break;
+            }
+
+            // Стоимость дополнительных услуг
+            let servicesCost = 0;
+            additionalServices.forEach(service => {
+                switch(service.value) {
+                    case 'dentistry':
+                        servicesCost += 50;  // $50 для стоматологии
+                        break;
+                    case 'psychotherapy':
+                        servicesCost += 70;  // $70 для психотерапии
+                        break;
+                    case 'rehabilitation':
+                        servicesCost += 100;  // $100 для реабилитации
+                        break;
+                }
+            });
+
+            // Общая стоимость
+            const totalCost = baseCost + packageCost + servicesCost;
+            document.getElementById('totalCost').textContent = `Итоговая стоимость: $${totalCost.toFixed(2)}`;
+        }
+    </script>
+</head>
+
+
+<div class="h-[70px] bg-orange-400 flex items-center justify-around">
+    <h1 class=" text-white text-[25px] font-semibold"><i class="bi bi-envelope-paper-fill"></i> Только электронный полис безопасней</h1>
+    
+    <h1 class=" text-white text-[25px] font-semibold"><i class="bi bi-stopwatch"></i> Минимум действий — экономия времени</h1>
+    
+    <h1 class=" text-white text-[25px] font-semibold"><i class="bi bi-pc-display"></i> Оформление через Вайбер или сайт</h1>
+    </div>
+    
+    
+    <div class="h-[100px] bg-slate-100 flex justify-around items-center">
+        <div class="flex gap-4">
+            <img src="./Assets/box.png" alt="">
+           <div>
+    <h1 class="text-blue-600 text-[38px] font-semibold">Дарим 300$</h1>
+    <h1 class="font-semibold">если у нас будет дороже</h1>
+           </div> 
+        </div>
+    
+    <ul class="flex gap-12">
+        <li><a href="./index.html" class="hover:underline decoration-blue-600 font-semibold">Главная страница</a></li>
+        <li><a href="./nas.html" class="hover:underline decoration-blue-600 font-semibold">О нас</a></li>
+        <li><a href="./kontakti.html" class="hover:underline decoration-blue-600 font-semibold">Контакты</a></li>
+        <li><a href="./register.html" class="hover:underline decoration-blue-600 font-semibold">Оплата и доставка</a></li>
+    </ul>
+    
+    <div class="flex gap-4 items-center">
+        <img src="./Assets/i1.svg" alt="">
+        <img src="./Assets/i2.png" alt="" class="w-[50px] h-[50px]">
+        <img src="./Assets/i3.svg" alt="">
+    
+        <div>
+            <h1 class="text-blue-600 text-[38px] font-semibold">977770159</h1>
+            <h1 class="text-[20px]">10:00-23:00</h1>
+        </div>
+    </div>
+    
+    </div>
+
+
+<body class="bg-gray-100">
+
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-green-500 to-blue-600 text-white text-center py-16">
+        <h1 class="text-4xl font-bold mb-2">Калькулятор стоимости медицинского страхования</h1>
+        <p class="text-lg">Расчитайте стоимость полиса для добровольного медицинского страхования в долларах</p>
+    </header>
+
+    <!-- Calculator Form -->
+    <section class="container mx-auto px-4 py-16">
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+            <h2 class="text-3xl font-semibold text-green-700 mb-6">Заполните данные</h2>
+
+            <!-- Age Input -->
+            <div class="mb-6">
+                <label for="age" class="block text-lg text-gray-700 mb-2">Возраст</label>
+                <input type="number" id="age" class="w-full p-3 border border-gray-300 rounded-lg" placeholder="Введите ваш возраст">
+            </div>
+
+            <!-- Package Type -->
+            <div class="mb-6">
+                <span class="block text-lg text-gray-700 mb-2">Выберите пакет</span>
+                <div class="flex items-center">
+                    <label class="mr-4">
+                        <input type="radio" name="package" value="basic" class="mr-2" checked>
+                        Базовый
+                    </label>
+                    <label class="mr-4">
+                        <input type="radio" name="package" value="standard" class="mr-2">
+                        Стандартный
+                    </label>
+                    <label>
+                        <input type="radio" name="package" value="premium" class="mr-2">
+                        Премиум
+                    </label>
+                </div>
+            </div>
+
+            <!-- Additional Services -->
+            <div class="mb-6">
+                <span class="block text-lg text-gray-700 mb-2">Дополнительные услуги</span>
+                <div class="flex items-center">
+                    <label class="mr-4">
+                        <input type="checkbox" name="services" value="dentistry" class="mr-2">
+                        Стоматология
+                    </label>
+                    <label class="mr-4">
+                        <input type="checkbox" name="services" value="psychotherapy" class="mr-2">
+                        Психотерапия
+                    </label>
+                    <label>
+                        <input type="checkbox" name="services" value="rehabilitation" class="mr-2">
+                        Реабилитация
+                    </label>
+                </div>
+            </div>
+
+            <!-- Calculate Button -->
+            <button onclick="calculateInsurance()" class="w-full py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition duration-200">
+                Рассчитать стоимость
+            </button>
+
+            <!-- Result -->
+            <div class="mt-6 text-center">
+                <p id="totalCost" class="text-2xl font-bold text-gray-800">Итоговая стоимость: $0.00</p>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-center py-16">
+        <h1 class="text-5xl font-bold mb-2">Добровольное медицинское страхование</h1>
+        <p class="text-lg">Забота о вашем здоровье начинается здесь</p>
+    </header>
+
+    <!-- Introduction Section -->
+    <section class="container mx-auto px-4 py-16">
+        <h2 class="text-3xl font-semibold text-blue-700 mb-6">Что такое добровольное медицинское страхование?</h2>
+        <p class="text-lg text-gray-700">Добровольное медицинское страхование (ДМС) позволяет вам получать высококачественную медицинскую помощь, превышающую стандартные услуги, предоставляемые в рамках обязательного медицинского страхования. Это возможность выбрать лучшие медицинские учреждения и программы, соответствующие вашим нуждам.</p>
+    </section>
+
+    <!-- Advantages Section -->
+    <section class="container mx-auto px-4 py-16">
+        <h2 class="text-3xl font-semibold text-blue-700 mb-6">Преимущества добровольного медицинского страхования</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl font-medium text-blue-600 mb-4">Быстрое обслуживание</h3>
+                <p class="text-gray-600">Минимальные очереди, приоритетное обслуживание в лучших клиниках и медицинских центрах.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl font-medium text-blue-600 mb-4">Широкий выбор клиник</h3>
+                <p class="text-gray-600">Выбор лучших медицинских учреждений для вашего удобства и комфорта.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl font-medium text-blue-600 mb-4">Дополнительные услуги</h3>
+                <p class="text-gray-600">Психотерапия, стоматология, реабилитация и другие дополнительные услуги на выбор.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coverage Section -->
+    <section class="container mx-auto px-4 py-16 bg-gray-50 rounded-lg shadow-md">
+        <h2 class="text-3xl font-semibold text-blue-700 mb-6">Какие услуги покрывает ДМС?</h2>
+        <ul class="list-disc pl-5 space-y-3 text-gray-700 text-lg">
+            <li>Диагностика: анализы, исследования, консультации врачей.</li>
+            <li>Лечение: амбулаторное и стационарное лечение, операции.</li>
+            <li>Профилактика: вакцинации, осмотры, медицинские процедуры.</li>
+            <li>Неотложная помощь: экстренные услуги при любых ситуациях.</li>
+            <li>Специальные программы: лечение хронических заболеваний, стоматология, реабилитация.</li>
+        </ul>
+    </section>
+
+    <!-- Process Section -->
+    <section class="container mx-auto px-4 py-16">
+        <h2 class="text-3xl font-semibold text-blue-700 mb-6">Как выбрать программу ДМС?</h2>
+        <p class="text-lg text-gray-700 mb-6">Мы предлагаем несколько пакетов страхования, в зависимости от ваших нужд. Выберите подходящий вариант:</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl font-medium text-blue-600 mb-4">Стандартный пакет</h3>
+                <p class="text-gray-600">Базовые медицинские услуги и доступ к основным врачам.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl font-medium text-blue-600 mb-4">Расширенный пакет</h3>
+                <p class="text-gray-600">Дополнительные услуги, включая диагностику и профилактику.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl font-medium text-blue-600 mb-4">Премиум пакет</h3>
+                <p class="text-gray-600">Лучшие клиники и специализированные программы для вашего здоровья.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="container mx-auto px-4 py-16 bg-gray-50 rounded-lg shadow-md">
+        <h2 class="text-3xl font-semibold text-blue-700 mb-6">Часто задаваемые вопросы</h2>
+        <div class="space-y-6">
+            <div>
+                <h4 class="text-xl font-medium text-blue-600">Что делать, если я заболел за границей?</h4>
+                <p class="text-lg text-gray-700">Если у вас есть международный полис ДМС, вы получите медицинскую помощь в большинстве стран мира.</p>
+            </div>
+            <div>
+                <h4 class="text-xl font-medium text-blue-600">Можно ли изменить программу страхования?</h4>
+                <p class="text-lg text-gray-700">Да, вы можете изменить программу в любой момент, обратившись к своему страховому агенту.</p>
+            </div>
+        </div>
+    </section>
+
+    
+
+
+    <div class="h-[100px] w-[754px] flex justify-center   items-center mt-20 m-auto gap-32" data-aos="zoom-in" data-aos-delay="200"
+>
+    <h1 class="text-[80px] font-bold text-orange-600" >100%</h1>
+    
+    <h1 class="text-[20px] font-bold"><br>
+       <span class="text-blue-600"> гарантия возврата денег, страховой компанией,</span><br>
+       за неиспользованные месяцы страховки</h1>
+       <img src="./Assets/icon.png" alt="">
+    </div>
+
+
+
+    <div class="h-[141px] bg-orange-400 flex justify-center mt-20 gap-10" data-aos="slide-up" data-aos-duration="600"
+    >
+        <img src="./Assets/telephone.png" alt="" class="h-[210px] relative bottom-17" data-aos="flip-up" data-aos-delay="300"
+        >
+        <div>
+            <h1 class="text-[20px] font-bold text-white">Хочешь страховку по минимальной цене?</h1>
+            <h1 class="mt-5 text-white">
+                — Пишите нам в Вайбер или Телеграм +380503524107 или заполняте данные на нашем сайте самостоятельно! <br>
+        Раньше нужно было звонить и вызывать агента для оформления полиса. Сейчас, с вводом электроного полиса, ситуация на рынке изменилась.  По телефону <br>полис не оформляется. Нужно писать в Вайбер или оформлять самостоятельно.
+            </h1>
+        </div>
+        </div>
+
+
+
+        <div class="h-[376px] flex justify-center pt-16 bg-slate-200 gap-24 items-center">
+
+            <div>
+            <button class="border border-blue-600 rounded-[41px] w-[140px] h-[45px] text-blue-700 flex gap-4 items-center justify-center font-medium text-[19px]"> <i class="bi bi-house-door font-semibold"></i>Главная</button>
+            
+            
+            <button class="border border-yellow-400 rounded-[41px] w-[140px] h-[45px]  flex gap-4 items-center justify-center font-medium text-[19px] mt-4 text-yellow-400"> <i class="bi bi-megaphone text-yellow-400  font-semibold"></i>Акции</button>
+            
+            
+            <button class="border border-purple-300 rounded-[41px] w-[140px] h-[45px]  flex gap-4 items-center justify-center font-medium text-[19px] mt-4 text-purple-300"> <i class="bi bi-calendar3 font-semibold"></i>Блог</button>
+            
+            </div>
+            
+            <div>
+                <h1 class="font-semibold text-[20px]">Компания</h1>
+                <ul>
+                    <li><a href="" class="text-slate-400 mt-8 hover:underline decoration-yellow-300">О нас</a></li>
+                    <li><a href="" class="text-slate-400 mt-4 hover:underline decoration-yellow-300">Контакты</a></li>
+                    <li><a href="" class="text-slate-400 mt-4 hover:underline decoration-yellow-300">Оплата и доставка</a></li>
+                    <li><a href="" class="text-slate-400 mt-4 hover:underline decoration-yellow-300">Юридическая Гарантия</a></li>
+                    <li><a href="" class="text-slate-400 mt-4 hover:underline decoration-yellow-300">Публичный договор</a></li>
+                </ul>
+            </div>
+            
+            
+            <div>
+                <h1 class="font-semibold text-[20px]">Страхование</h1>
+                <ul>
+                    <li><a href="" class="text-slate-400 mt-8 hover:underline decoration-yellow-300">Онлайн ОСАГО</a></li>
+                    <li><a href="" class="text-slate-400 mt-4 hover:underline decoration-yellow-300">Зеленая карта</a></li>
+                    <li><a href="" class="text-slate-400 mt-4 hover:underline decoration-yellow-300">Страхование оружия</a></li>
+                    <li><a href="" class="text-slate-400 mt-4 hover:underline decoration-yellow-300">Страхование нотариусов</a></li>
+                    <li><a href="" class="text-slate-400 mt-4 hover:underline decoration-yellow-300">Онлайн КАСКО</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <ul>
+                    <li><a href="" class="text-slate-400 mt-8 hover:underline decoration-yellow-300">Квартира и дом</a></li>
+                    <li><a href="" class="text-slate-400 mt-4 hover:underline decoration-yellow-300">От Короновируса</a></li>
+                    <li><a href="" class="text-slate-400 mt-4 hover:underline decoration-yellow-300">Страхование туристов</a></li>
+                    <li><a href="" class="text-slate-400 mt-4 hover:underline decoration-yellow-300">Ассистанс</a></li>
+                    <li><a href="" class="text-slate-400 mt-4 hover:underline decoration-yellow-300">Здоровье</a></li>
+                </ul>
+            </div>
+            
+            
+            <div>
+                <h1 class="font-semibold text-[20px]">Обратная связь</h1>
+            
+                <div class="flex gap-6 mt-4">
+                    <img src="./Assets/i1.svg" alt="">
+                    <img src="./Assets/i2.png" alt="">
+                    <img src="./Assets/i3.svg" alt="">
+                </div>
+            
+            
+            <h1 class="text-blue-500 text-[24px] font-semibold mt-2">977770159</h1>
+            
+            <p class="text-slate-400 mt-2">ответим в течении 5 минут с 9 до 21 <br>
+                оформим полис в течении 5 минут с 10 до 18</p>
+            
+            </div>
+            
+            
+            </div>
+            
+            <div class="h-[100px] flex justify-around items-center">
+            <p class="text-slate-400">© 2011-2021 polisosago.kiev.ua. Авторские права на сайт защищены</p>
+            <div class=" flex gap-4">
+                <li class="list-none"><a href="" class="text-slate-400 mt-4 hover:underline decoration-yellow-300">Карта сайта</a></li>
+                <p class="text-slate-400">Можно оплатить с помощью:
+                </p>
+            
+                
+            </div>
+            
+            </div>
+ 
+            <script src="./tailwind.config.js"></script>
+            <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+            <script>
+              AOS.init();
+            </script>
+</body>
+</html>
